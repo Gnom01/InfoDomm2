@@ -199,9 +199,7 @@
             this.Text = "Form1";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dsfDataSetBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bazaBDBindingSource)).EndInit();
+
             this.ResumeLayout(false);
 
         }
