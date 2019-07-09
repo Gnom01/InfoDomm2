@@ -11,7 +11,6 @@ namespace InfoDOM
         public Form1()
         {
             InitializeComponent();
-
         }
 
         private void StartParsing_Click(object sender, EventArgs e)

@@ -20,6 +20,6 @@ namespace InfoDOM
             Application.Restart();
         }
         
-        }
+        
     }
 }
