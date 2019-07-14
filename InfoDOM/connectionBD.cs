@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 namespace InfoDOM
 {
-    public class connectionBD : Form1
+    public class ConnectionBD 
     {
         public SqlConnection sqlConnection;
         public SqlDataReader sqlReader = null;

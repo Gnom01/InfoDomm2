@@ -6,8 +6,9 @@ using System.Windows.Forms;
 
 namespace InfoDOM
 {
-    public class HouseParsed : connectionBD
+    public class HouseParsed : ConnectionBD
     {
+        String Response;
         public string title;
         public string area;
         public string areaYard;
@@ -18,25 +19,47 @@ namespace InfoDOM
         public int numberOfPages = 1;
         public int identifierOfBase = 1;
         public int listNumberPages = 1;
-        String Response;
+        public string wwwAdres;
+        public int nrPag;
+        public string CodeBlockHtml1; 
+        public string CodeBlockHtml2;
+        public string textBloc1_1;
+        public string textBloc1_2;
+        public string textBloc2_1;
+        public string textBloc2_2;
+        public string textBloc3_1;
+        public string textBloc3_2;
+        public string textBloc4_1;
+        public string textBloc4_2;
+        public string textBloc5_1;
+        public string textBloc5_2;
+        public string textBloc6_1;
+        public string textBloc6_2;
+        public string textBloc7_1;
+        public string textBloc7_2;
+        public string textBloc8_1;
+        public string textBloc8_2;
+        public string wwwAdress;
 
         public void partParsingCodePages()
         {
-            connectionBD connection = new connectionBD();
-
+            ConnectionBD connection = new ConnectionBD();
+           
             connection.ConnectionTheBase(connection.sqlConnection);
             for (int i = 1; i <= numberOfPages; i++)
             {
-               
+                nrPag = listNumberPages;
+                wwwAdress = wwwAdres + nrPag;
+                Form1 form1 = new Form1();
                 System.Net.WebClient wc = new System.Net.WebClient();
                 wc.Encoding = Encoding.GetEncoding("UTF-8");
-                Response = wc.DownloadString("https://www.otodom.pl/sprzedaz/dom/warszawa/?search%5Bfilter_float_m%3Ato%5D=500&search%5Bdescription%5D=1&search%5Bdist%5D=25&search%5Bsubregion_id%5D=197&search%5Bcity_id%5D=26&page=1");
-                string partParsingCode = @"<div class=""offer-item-details"">(.*?)<div class=""offer-item-details-bottom"" data-tracking=""click_body"" data-tracking-data=";
+                Response = wc.DownloadString(wwwAdress);
+                string partParsingCode = $@"{CodeBlockHtml1}(.*?){CodeBlockHtml2}";
                 RegexOptions optionsRegex = RegexOptions.Singleline;
                 Regex regexMatch = new Regex(partParsingCode, optionsRegex);
                 MatchCollection parStringtParsingCode = regexMatch.Matches(Response);
                 StartPrsingSet(parStringtParsingCode, optionsRegex);
-                listNumberPages++;
+                ++listNumberPages;
             }
         }
 
@@ -47,47 +70,47 @@ namespace InfoDOM
             {
                 foreach (Match m in ParsingString)
                 {
-                    connectionBD connectionString = new connectionBD();
+                    ConnectionBD connectionString = new ConnectionBD();
                     connectionString.ConnectionTheBase(connectionString.sqlConnection);
                     SqlCommand command = new SqlCommand("INSERT INTO[BazaBD](Id, Title1, m2_1 , m2_2 , cena1, lokalizacja, id1, pokoje, list)VALUES(@Id, @Title1, @m2_1, @m2_2, @cena1, @lokalizacja, @id1, @pokoje, @list)", connectionString.sqlConnection);
 
-                    string TitleString = @"<span class=""offer-item-title"">(.*?)</span>";
+                    string TitleString = $@"{textBloc1_1}(.*?){textBloc1_2}";
                     Regex newTitleString = new Regex(TitleString, optionsRegex);
                     Match titleSample = newTitleString.Match(Convert.ToString(ParsingString[numberCollectionString]));
                     title = titleSample.Groups[1].Value;
                     command.Parameters.AddWithValue("Title1", title.ToString());
 
-                    string houseAreaString = @"<strong class=""visible-xs-block"">(.*?)\s+m²</strong>";
+                    string houseAreaString = $@"{textBloc2_1}(.*?){textBloc2_2}";
                     Regex houseAreaSample = new Regex(houseAreaString, optionsRegex);
                     Match houseArea = houseAreaSample.Match(Convert.ToString(ParsingString[numberCollectionString]));
                     area = houseArea.Groups[1].Value;
                     command.Parameters.AddWithValue("m2_1", area.ToString());
 
-                    string AreaYardString = @"<li class=""hidden-xs offer-item-area"">działka(.*?)</li>";
+                    string AreaYardString = $@"{textBloc3_1}(.*?){textBloc3_2}";
                     Regex AreaYardSample = new Regex(AreaYardString, optionsRegex);
                     Match AreaYardNew = AreaYardSample.Match(Convert.ToString(ParsingString[numberCollectionString]));
                     areaYard = AreaYardNew.Groups[1].Value;
                     command.Parameters.AddWithValue("m2_2", areaYard.ToString());
 
-                    string priceString = @"<li class=""offer-item-price"">\s+(.*?)zł\s+</li>";
+                    string priceString = $@"{textBloc4_1}(.*?){textBloc4_2}";
                     Regex priceSample = new Regex(priceString, optionsRegex);
                     Match Price = priceSample.Match(Convert.ToString(ParsingString[numberCollectionString]));
-                    price = Price.Groups[1].Value;
+                    price = Price.Groups[1].Value; 
                     command.Parameters.AddWithValue("cena1", price.ToString());
 
-                    string locationString = @"<span class=""hidden-xs"">Dom na sprzedaż: </span>(.*?)</p>";
+                    string locationString = $@"{textBloc5_1}(.*?){textBloc5_2}";
                     Regex locationSample = new Regex(locationString, optionsRegex);
                     Match Location = locationSample.Match(Convert.ToString(ParsingString[numberCollectionString]));
-                    location = Location.Groups[1].Value;
+                    location = Location.Groups[1].Value; 
                     command.Parameters.AddWithValue("lokalizacja", location.ToString());
 
-                    string IdentifierString = @" data-id=""(.*?)"" href=""#"">";
+                    string IdentifierString = $@"{textBloc6_1}(.*?){textBloc6_2}";
                     Regex IdentifierSample = new Regex(IdentifierString, optionsRegex);
                     Match IdentifierNew = IdentifierSample.Match(Convert.ToString(ParsingString[numberCollectionString]));
                     identifier = IdentifierNew.Groups[1].Value;
                     command.Parameters.AddWithValue("id1", identifier.ToString());
 
-                    string RoomCountString = @"<li class=""offer-item-rooms hidden-xs"">(.*?)</li>";
+                    string RoomCountString = $@"{textBloc7_1}(.*?){textBloc7_2}";
                     Regex RoomCountSample = new Regex(RoomCountString, optionsRegex);
                     Match RoomCountNew = RoomCountSample.Match(Convert.ToString(ParsingString[numberCollectionString]));
                     roomCount = RoomCountNew.Groups[1].Value;
