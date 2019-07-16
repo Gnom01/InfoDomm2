@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Text;
 using System.Windows.Forms;
 
 namespace InfoDOM
@@ -10,7 +11,7 @@ namespace InfoDOM
         public Form1()
         {
             InitializeComponent();
-           // Refresh_NewGrid(); TODO
+            Refresh_NewGrid();
         }
 
         private void EXIT_Click(object sender, EventArgs e)
@@ -23,62 +24,9 @@ namespace InfoDOM
             Controller controller = new Controller();
             controller.DelatOldDataBase();
             HouseParsed houseParsedStart = new HouseParsed();
-            if(string.IsNullOrWhiteSpace(houseParsedStart.CodeBlockHtml1))
-            {
-                throw new ArgumentNullException("Początek bloku kodu muśi być wpisany", nameof(houseParsedStart.CodeBlockHtml1));
-            }
-            else
-            {
-                houseParsedStart.CodeBlockHtml1 = this.CodeBlockHtml1.Text;
-            }
-            
-            if (string.IsNullOrWhiteSpace(houseParsedStart.CodeBlockHtml2))
-            {
-                throw new ArgumentNullException("Koniec bloku kodu muśi być wpisany!", nameof(houseParsedStart.CodeBlockHtml2));
-            }
-            else
-            {
-                houseParsedStart.CodeBlockHtml2 = this.CodeBlockHtml2.Text;
-            }
-
-            houseParsedStart.textBloc1_1 = this.textBox1_1.Text;
-            houseParsedStart.textBloc1_2 = this.textBox1_2.Text;
-            houseParsedStart.textBloc2_1 = this.textBox2_1.Text;
-            houseParsedStart.textBloc2_2 = this.textBox2_2.Text;
-            houseParsedStart.textBloc3_1 = this.textBox3_1.Text;
-            houseParsedStart.textBloc3_2 = this.textBox3_2.Text;
-            houseParsedStart.textBloc4_1 = this.textBox4_1.Text;
-            houseParsedStart.textBloc4_2 = this.textBox4_2.Text;
-            houseParsedStart.textBloc5_1 = this.textBox5_1.Text;
-            houseParsedStart.textBloc5_2 = this.textBox5_2.Text;
-            houseParsedStart.textBloc6_1 = this.textBox6_1.Text;
-            houseParsedStart.textBloc6_2 = this.textBox6_2.Text;
-            houseParsedStart.textBloc7_1 = this.textBox7_1.Text;
-            houseParsedStart.textBloc7_2 = this.textBox7_2.Text;
-
-            if ( string.IsNullOrWhiteSpace(houseParsedStart.wwwAddres))
-            {
-                throw new ArgumentNullException("Adres strony nie morze być pusty!");
-            }
-            else
-            {
-                houseParsedStart.wwwAddres = this.AdressWWW.Text;
-            }
-
-            if (houseParsedStart.nrPag.Equals(null))
-            {
-                throw new ArgumentNullException("Numeracja strony nie morze być pusta!");
-            }
-            else
-            {
-                houseParsedStart.nrPag = Convert.ToInt32(wwwPag.Text);
-            }
-
+            controller.copiHtmlParser();
             houseParsedStart.partParsingCodePages();
         }
-
-
-
 
         /// <summary>
         /// Loaud BD
@@ -118,7 +66,6 @@ namespace InfoDOM
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message.ToString(), ex.Source.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
-
             }
             finally
             {
@@ -152,6 +99,12 @@ namespace InfoDOM
             {
                 e.Handled = true;
             }
+        }
+
+        private void ShowHTML_Click(object sender, EventArgs e)
+        {
+            Controller controller = new Controller();
+            controller.loaudHTMLTextBox();
         }
     }
 }

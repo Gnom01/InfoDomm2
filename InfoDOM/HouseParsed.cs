@@ -8,7 +8,7 @@ namespace InfoDOM
 {
     public class HouseParsed : ConnectionBD
     {
-        String Response;
+        public String Response;
         public string title;
         public string area;
         public string areaYard;
@@ -40,6 +40,8 @@ namespace InfoDOM
         public string textBloc8_1;
         public string textBloc8_2;
         public string wwwAddressWhole;
+        public string numberPage1_1;
+        public string numberPage1_2;
 
         public void partParsingCodePages()
         {
@@ -118,7 +120,7 @@ namespace InfoDOM
                     roomCount = RoomCountNew.Groups[1].Value;
                     command.Parameters.AddWithValue("pokoje", roomCount.ToString());
 
-                    String NumberOfPagesString = System.Text.RegularExpressions.Regex.Match(Response, @"<input id=""pageParam"" type=""number"" name=""page"" placeholder=""(.*?)"" class=""input-number-noSpinners"">").Groups[1].Value;
+                    String NumberOfPagesString = System.Text.RegularExpressions.Regex.Match(Response, $@"{numberPage1_1}(.*?){numberPage1_2}").Groups[1].Value;
                     numberOfPages = Convert.ToInt32(NumberOfPagesString);
                     command.Parameters.AddWithValue("list", listNumberPages);
                     command.Parameters.AddWithValue("Id", identifierOfBase);

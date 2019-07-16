@@ -70,6 +70,10 @@
             this.textBox6_1 = new System.Windows.Forms.TextBox();
             this.textBox7_2 = new System.Windows.Forms.TextBox();
             this.textBox7_1 = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.textBox8_2 = new System.Windows.Forms.TextBox();
+            this.textBox8_1 = new System.Windows.Forms.TextBox();
+            this.ShowHTML = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -176,7 +180,7 @@
             // 
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(439, 487);
+            this.label1.Location = new System.Drawing.Point(10, 488);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(35, 13);
             this.label1.TabIndex = 4;
@@ -186,7 +190,7 @@
             // 
             this.AdressWWW.Location = new System.Drawing.Point(13, 22);
             this.AdressWWW.Name = "AdressWWW";
-            this.AdressWWW.Size = new System.Drawing.Size(862, 20);
+            this.AdressWWW.Size = new System.Drawing.Size(753, 20);
             this.AdressWWW.TabIndex = 5;
             this.AdressWWW.Text = "https://www.otodom.pl/sprzedaz/dom/warszawa/?search%5Bfilter_float_m%3Ato%5D=500&" +
     "search%5Bdescription%5D=1&search%5Bdist%5D=25&search%5Bsubregion_id%5D=197&searc" +
@@ -195,7 +199,7 @@
             // 
             // wwwPag
             // 
-            this.wwwPag.Location = new System.Drawing.Point(880, 21);
+            this.wwwPag.Location = new System.Drawing.Point(772, 22);
             this.wwwPag.Name = "wwwPag";
             this.wwwPag.Size = new System.Drawing.Size(75, 20);
             this.wwwPag.TabIndex = 6;
@@ -214,7 +218,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(872, 4);
+            this.label3.Location = new System.Drawing.Point(769, 4);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(95, 13);
             this.label3.TabIndex = 8;
@@ -469,11 +473,56 @@
             this.textBox7_1.TabIndex = 32;
             this.textBox7_1.Text = "<li class=\"offer-item-rooms hidden-xs\">";
             // 
+            // label12
+            // 
+            this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(63, 464);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(37, 13);
+            this.label12.TabIndex = 34;
+            this.label12.Text = "Pole 8";
+            // 
+            // textBox8_2
+            // 
+            this.textBox8_2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox8_2.Location = new System.Drawing.Point(460, 457);
+            this.textBox8_2.Name = "textBox8_2";
+            this.textBox8_2.Size = new System.Drawing.Size(446, 20);
+            this.textBox8_2.TabIndex = 36;
+            this.textBox8_2.Text = "\" class=\"input-number-noSpinners\">";
+            // 
+            // textBox8_1
+            // 
+            this.textBox8_1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox8_1.Location = new System.Drawing.Point(107, 457);
+            this.textBox8_1.Name = "textBox8_1";
+            this.textBox8_1.Size = new System.Drawing.Size(347, 20);
+            this.textBox8_1.TabIndex = 35;
+            this.textBox8_1.Text = "<input id=\"pageParam\" type=\"number\" name=\"page\" placeholder=\"";
+            // 
+            // ShowHTML
+            // 
+            this.ShowHTML.Location = new System.Drawing.Point(870, 18);
+            this.ShowHTML.Name = "ShowHTML";
+            this.ShowHTML.Size = new System.Drawing.Size(86, 23);
+            this.ShowHTML.TabIndex = 37;
+            this.ShowHTML.Text = "Show HTML";
+            this.ShowHTML.UseVisualStyleBackColor = true;
+            this.ShowHTML.Click += new System.EventHandler(this.ShowHTML_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(971, 510);
+            this.Controls.Add(this.ShowHTML);
+            this.Controls.Add(this.textBox8_2);
+            this.Controls.Add(this.textBox8_1);
+            this.Controls.Add(this.label12);
             this.Controls.Add(this.textBox7_2);
             this.Controls.Add(this.textBox7_1);
             this.Controls.Add(this.textBox6_2);
@@ -530,14 +579,14 @@
         private System.Windows.Forms.Button EXIT;
         private System.Windows.Forms.Button startparsing;
         private new System.Windows.Forms.Button Refresh;
-        public System.Windows.Forms.Label label1;
         public System.Windows.Forms.TextBox AdressWWW;
         public System.Windows.Forms.TextBox wwwPag;
+        public System.Windows.Forms.TextBox CodeBlockHtml1;
+        public System.Windows.Forms.TextBox CodeBlockHtml2;
+        public System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        public System.Windows.Forms.TextBox CodeBlockHtml1;
-        public System.Windows.Forms.TextBox CodeBlockHtml2;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
@@ -545,6 +594,7 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label12;
         public System.Windows.Forms.TextBox textBox1_2;
         public System.Windows.Forms.TextBox textBox1_1;
         public System.Windows.Forms.TextBox textBox2_2;
@@ -559,6 +609,9 @@
         public System.Windows.Forms.TextBox textBox6_1;
         public System.Windows.Forms.TextBox textBox7_2;
         public System.Windows.Forms.TextBox textBox7_1;
+        public System.Windows.Forms.TextBox textBox8_2;
+        public System.Windows.Forms.TextBox textBox8_1;
+        private System.Windows.Forms.Button ShowHTML;
     }
 
 }
