@@ -19,7 +19,7 @@ namespace InfoDOM
         public int numberOfPages = 1;
         public int identifierOfBase = 1;
         public int listNumberPages = 1;
-        public string wwwAdres;
+        public string wwwAddres;
         public int nrPag;
         public string CodeBlockHtml1; 
         public string CodeBlockHtml2;
@@ -39,7 +39,7 @@ namespace InfoDOM
         public string textBloc7_2;
         public string textBloc8_1;
         public string textBloc8_2;
-        public string wwwAdress;
+        public string wwwAddressWhole;
 
         public void partParsingCodePages()
         {
@@ -49,11 +49,11 @@ namespace InfoDOM
             for (int i = 1; i <= numberOfPages; i++)
             {
                 nrPag = listNumberPages;
-                wwwAdress = wwwAdres + nrPag;
+                wwwAddressWhole = wwwAddres + nrPag;
                 Form1 form1 = new Form1();
                 System.Net.WebClient wc = new System.Net.WebClient();
                 wc.Encoding = Encoding.GetEncoding("UTF-8");
-                Response = wc.DownloadString(wwwAdress);
+                Response = wc.DownloadString(wwwAddressWhole);
                 string partParsingCode = $@"{CodeBlockHtml1}(.*?){CodeBlockHtml2}";
                 RegexOptions optionsRegex = RegexOptions.Singleline;
                 Regex regexMatch = new Regex(partParsingCode, optionsRegex);
@@ -72,7 +72,9 @@ namespace InfoDOM
                 {
                     ConnectionBD connectionString = new ConnectionBD();
                     connectionString.ConnectionTheBase(connectionString.sqlConnection);
-                    SqlCommand command = new SqlCommand("INSERT INTO[BazaBD](Id, Title1, m2_1 , m2_2 , cena1, lokalizacja, id1, pokoje, list)VALUES(@Id, @Title1, @m2_1, @m2_2, @cena1, @lokalizacja, @id1, @pokoje, @list)", connectionString.sqlConnection);
+                    SqlCommand command = new SqlCommand("INSERT INTO[BazaBD](Id, Title1, m2_1 , m2_2 , cena1, lokalizacja, id1, pokoje, list)" +
+                                                         "VALUES          (@Id, @Title1, @m2_1, @m2_2, @cena1, @lokalizacja, @id1, @pokoje, @list)", 
+                                                         connectionString.sqlConnection);
 
                     string TitleString = $@"{textBloc1_1}(.*?){textBloc1_2}";
                     Regex newTitleString = new Regex(TitleString, optionsRegex);

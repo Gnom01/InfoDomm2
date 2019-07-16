@@ -10,7 +10,7 @@ namespace InfoDOM
         public Form1()
         {
             InitializeComponent();
-            Refresh_NewGrid();
+           // Refresh_NewGrid(); TODO
         }
 
         private void EXIT_Click(object sender, EventArgs e)
@@ -23,8 +23,24 @@ namespace InfoDOM
             Controller controller = new Controller();
             controller.DelatOldDataBase();
             HouseParsed houseParsedStart = new HouseParsed();
-            houseParsedStart.CodeBlockHtml1 = this.CodeBlockHtml1.Text;
-            houseParsedStart.CodeBlockHtml2 = this.CodeBlockHtml2.Text;
+            if(string.IsNullOrWhiteSpace(houseParsedStart.CodeBlockHtml1))
+            {
+                throw new ArgumentNullException("Początek bloku kodu muśi być wpisany", nameof(houseParsedStart.CodeBlockHtml1));
+            }
+            else
+            {
+                houseParsedStart.CodeBlockHtml1 = this.CodeBlockHtml1.Text;
+            }
+            
+            if (string.IsNullOrWhiteSpace(houseParsedStart.CodeBlockHtml2))
+            {
+                throw new ArgumentNullException("Koniec bloku kodu muśi być wpisany!", nameof(houseParsedStart.CodeBlockHtml2));
+            }
+            else
+            {
+                houseParsedStart.CodeBlockHtml2 = this.CodeBlockHtml2.Text;
+            }
+
             houseParsedStart.textBloc1_1 = this.textBox1_1.Text;
             houseParsedStart.textBloc1_2 = this.textBox1_2.Text;
             houseParsedStart.textBloc2_1 = this.textBox2_1.Text;
@@ -39,11 +55,31 @@ namespace InfoDOM
             houseParsedStart.textBloc6_2 = this.textBox6_2.Text;
             houseParsedStart.textBloc7_1 = this.textBox7_1.Text;
             houseParsedStart.textBloc7_2 = this.textBox7_2.Text;
-            houseParsedStart.wwwAdres = this.AdressWWW.Text;
-            houseParsedStart.nrPag = Convert.ToInt32(wwwPag.Text);
+
+            if ( string.IsNullOrWhiteSpace(houseParsedStart.wwwAddres))
+            {
+                throw new ArgumentNullException("Adres strony nie morze być pusty!");
+            }
+            else
+            {
+                houseParsedStart.wwwAddres = this.AdressWWW.Text;
+            }
+
+            if (houseParsedStart.nrPag.Equals(null))
+            {
+                throw new ArgumentNullException("Numeracja strony nie morze być pusta!");
+            }
+            else
+            {
+                houseParsedStart.nrPag = Convert.ToInt32(wwwPag.Text);
+            }
+
             houseParsedStart.partParsingCodePages();
-     
         }
+
+
+
+
         /// <summary>
         /// Loaud BD
         /// </summary>
@@ -104,8 +140,17 @@ namespace InfoDOM
             if (e.KeyCode == Keys.Enter)
             {
                 HouseParsed houseParsedwww = new HouseParsed();
-                houseParsedwww.wwwAdres = this.AdressWWW.Text;
+                houseParsedwww.wwwAddres = this.AdressWWW.Text;
                 houseParsedwww.partParsingCodePages();
+            }
+        }
+
+        private void wwwPag_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char number = e.KeyChar;
+            if((e.KeyChar <= 47 || e.KeyChar >= 58) && number != 8)
+            {
+                e.Handled = true;
             }
         }
     }
