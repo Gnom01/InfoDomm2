@@ -21,18 +21,18 @@ namespace InfoDOM
         {
             Form2 form2 = new Form2();
             Form1 form1 = new Form1();
-
+            string Response;
             HouseParsed houseParsedStart = new HouseParsed();
             System.Net.WebClient wc = new System.Net.WebClient();
             wc.Encoding = Encoding.GetEncoding("UTF-8");
-            houseParsedStart.Response = wc.DownloadString(form1.AdressWWW.Text + form1.wwwPag.Text);
-            if (string.IsNullOrWhiteSpace(houseParsedStart.Response))
+            Response = wc.DownloadString(form1.AdressWWW.Text + form1.wwwPag.Text);
+            if (string.IsNullOrWhiteSpace(Response))
             {
                 throw new ArgumentNullException("Adres strony nie jest poprawny!");
             }
             else
             {
-                form2.textBox(houseParsedStart.Response);
+                form2.textBox(Response);
                 form2.Show();
             }
         }

@@ -8,7 +8,7 @@ namespace InfoDOM
 {
     public class HouseParsed : ConnectionBD
     {
-        public String Response;
+        String Response;
         public string title;
         public string area;
         public string areaYard;
