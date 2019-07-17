@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Text;
 using System.Windows.Forms;
 
 namespace InfoDOM
@@ -22,9 +21,9 @@ namespace InfoDOM
         private void startparsing_Click(object sender, EventArgs e)
         {
             Controller controller = new Controller();
-            controller.DelatOldDataBase();
             HouseParsed houseParsedStart = new HouseParsed();
-            controller.copiHtmlParser();
+            houseParsedStart.copiHtmlParser();
+            controller.DelatOldDataBase();
             houseParsedStart.partParsingCodePages();
         }
 
@@ -87,7 +86,6 @@ namespace InfoDOM
             if (e.KeyCode == Keys.Enter)
             {
                 HouseParsed houseParsedwww = new HouseParsed();
-                houseParsedwww.wwwAddres = this.AdressWWW.Text;
                 houseParsedwww.partParsingCodePages();
             }
         }
@@ -106,5 +104,6 @@ namespace InfoDOM
             Controller controller = new Controller();
             controller.loaudHTMLTextBox();
         }
+       
     }
 }

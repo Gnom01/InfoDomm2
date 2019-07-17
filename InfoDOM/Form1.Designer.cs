@@ -29,15 +29,6 @@
         private void InitializeComponent()
         {
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Title = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.m2Domu = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.m2Działka = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cena = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Lokalizacja = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idOtodom = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.iliscPokoji = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CenaM2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EXIT = new System.Windows.Forms.Button();
             this.startparsing = new System.Windows.Forms.Button();
             this.Refresh = new System.Windows.Forms.Button();
@@ -74,6 +65,15 @@
             this.textBox8_2 = new System.Windows.Forms.TextBox();
             this.textBox8_1 = new System.Windows.Forms.TextBox();
             this.ShowHTML = new System.Windows.Forms.Button();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Title = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.m2Domu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.m2Działka = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cena = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Lokalizacja = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idOtodom = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.iliscPokoji = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CenaM2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -97,51 +97,6 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(943, 224);
             this.dataGridView1.TabIndex = 0;
-            // 
-            // Id
-            // 
-            this.Id.HeaderText = "Id";
-            this.Id.Name = "Id";
-            // 
-            // Title
-            // 
-            this.Title.HeaderText = "Title";
-            this.Title.Name = "Title";
-            // 
-            // m2Domu
-            // 
-            this.m2Domu.HeaderText = "m2 Domu";
-            this.m2Domu.Name = "m2Domu";
-            // 
-            // m2Działka
-            // 
-            this.m2Działka.HeaderText = "m2 Działka";
-            this.m2Działka.Name = "m2Działka";
-            // 
-            // Cena
-            // 
-            this.Cena.HeaderText = "Cena";
-            this.Cena.Name = "Cena";
-            // 
-            // Lokalizacja
-            // 
-            this.Lokalizacja.HeaderText = "Lokalizacja";
-            this.Lokalizacja.Name = "Lokalizacja";
-            // 
-            // idOtodom
-            // 
-            this.idOtodom.HeaderText = "id Otodom";
-            this.idOtodom.Name = "idOtodom";
-            // 
-            // iliscPokoji
-            // 
-            this.iliscPokoji.HeaderText = "ilisc Pokoji";
-            this.iliscPokoji.Name = "iliscPokoji";
-            // 
-            // CenaM2
-            // 
-            this.CenaM2.HeaderText = "Cena/m2";
-            this.CenaM2.Name = "CenaM2";
             // 
             // EXIT
             // 
@@ -401,7 +356,7 @@
             this.textBox4_2.Name = "textBox4_2";
             this.textBox4_2.Size = new System.Drawing.Size(446, 20);
             this.textBox4_2.TabIndex = 27;
-            this.textBox4_2.Text = "\\s</li>";
+            this.textBox4_2.Text = "\\s+</li>";
             // 
             // textBox4_1
             // 
@@ -514,6 +469,52 @@
             this.ShowHTML.UseVisualStyleBackColor = true;
             this.ShowHTML.Click += new System.EventHandler(this.ShowHTML_Click);
             // 
+            // Id
+            // 
+            this.Id.HeaderText = "Id";
+            this.Id.Name = "Id";
+            // 
+            // Title
+            // 
+            this.Title.HeaderText = "Title";
+            this.Title.Name = "Title";
+            this.Title.Width = 52;
+            // 
+            // m2Domu
+            // 
+            this.m2Domu.HeaderText = "m2 Domu";
+            this.m2Domu.Name = "m2Domu";
+            // 
+            // m2Działka
+            // 
+            this.m2Działka.HeaderText = "m2 Działka";
+            this.m2Działka.Name = "m2Działka";
+            // 
+            // Cena
+            // 
+            this.Cena.HeaderText = "Cena";
+            this.Cena.Name = "Cena";
+            // 
+            // Lokalizacja
+            // 
+            this.Lokalizacja.HeaderText = "Lokalizacja";
+            this.Lokalizacja.Name = "Lokalizacja";
+            // 
+            // idOtodom
+            // 
+            this.idOtodom.HeaderText = "id Otodom";
+            this.idOtodom.Name = "idOtodom";
+            // 
+            // iliscPokoji
+            // 
+            this.iliscPokoji.HeaderText = "ilisc Pokoji";
+            this.iliscPokoji.Name = "iliscPokoji";
+            // 
+            // CenaM2
+            // 
+            this.CenaM2.HeaderText = "Cena/m2";
+            this.CenaM2.Name = "CenaM2";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -567,15 +568,6 @@
         #endregion
 
         public System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Title;
-        private System.Windows.Forms.DataGridViewTextBoxColumn m2Domu;
-        private System.Windows.Forms.DataGridViewTextBoxColumn m2Działka;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Cena;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Lokalizacja;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idOtodom;
-        private System.Windows.Forms.DataGridViewTextBoxColumn iliscPokoji;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CenaM2;
         private System.Windows.Forms.Button EXIT;
         private System.Windows.Forms.Button startparsing;
         private new System.Windows.Forms.Button Refresh;
@@ -612,6 +604,15 @@
         public System.Windows.Forms.TextBox textBox8_2;
         public System.Windows.Forms.TextBox textBox8_1;
         private System.Windows.Forms.Button ShowHTML;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Title;
+        private System.Windows.Forms.DataGridViewTextBoxColumn m2Domu;
+        private System.Windows.Forms.DataGridViewTextBoxColumn m2Działka;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Cena;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Lokalizacja;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idOtodom;
+        private System.Windows.Forms.DataGridViewTextBoxColumn iliscPokoji;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CenaM2;
     }
 
 }
