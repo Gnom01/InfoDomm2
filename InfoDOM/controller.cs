@@ -17,7 +17,7 @@ namespace InfoDOM
         command.ExecuteNonQuery();
         }
 
-        public void loaudHTMLTextBox()
+        public void loaudHTMLTextBox(string wwwAddresForm, string nrPag)
         {
             Form2 form2 = new Form2();
             Form1 form1 = new Form1();
@@ -28,7 +28,7 @@ namespace InfoDOM
             }
             else
             {
-                houseParsedStart.wwwAddresForm = form1.AdressWWW.Text;
+                wwwAddresForm = form1.AdressWWW.Text;
             }
 
             if (form1.wwwPag.Text.Equals(null))
@@ -37,12 +37,12 @@ namespace InfoDOM
             }
             else
             {
-                houseParsedStart.nrPag = Convert.ToInt32(form1.wwwPag.Text);
+                nrPag = form1.wwwPag.Text;
             }
             String Response2;
             System.Net.WebClient wc2 = new System.Net.WebClient();
             wc2.Encoding = Encoding.GetEncoding("UTF-8");
-            Response2 = wc2.DownloadString(houseParsedStart.wwwAddresForm + houseParsedStart.nrPag);
+            Response2 = wc2.DownloadString(wwwAddresForm + nrPag);
             if (string.IsNullOrWhiteSpace(Response2))
             {
                 throw new ArgumentNullException("Adres strony nie jest poprawny!");

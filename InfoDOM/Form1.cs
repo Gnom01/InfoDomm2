@@ -22,10 +22,13 @@ namespace InfoDOM
         {
             Controller controller = new Controller();
             HouseParsed houseParsedStart = new HouseParsed();
-            houseParsedStart.copiHtmlParser();
+
+            houseParsedStart.StartPrsingSet(AdressWWW.Text, wwwPag.Text, CodeBlockHtml1.Text, CodeBlockHtml2.Text, textBox1_1.Text, textBox1_2.Text, textBox2_1.Text, 
+                textBox2_2.Text, textBox3_1.Text, textBox3_2.Text, textBox4_1.Text, textBox4_2.Text, textBox5_1.Text, textBox5_2.Text, 
+                textBox6_1.Text, textBox6_2.Text, textBox7_1.Text, textBox7_2.Text, textBox8_1.Text, textBox8_2.Text);
             controller.DelatOldDataBase();
-            houseParsedStart.partParsingCodePages();
         }
+       
 
         /// <summary>
         /// Loaud BD
@@ -86,7 +89,6 @@ namespace InfoDOM
             if (e.KeyCode == Keys.Enter)
             {
                 HouseParsed houseParsedwww = new HouseParsed();
-                houseParsedwww.partParsingCodePages();
             }
         }
 
@@ -102,7 +104,7 @@ namespace InfoDOM
         private void ShowHTML_Click(object sender, EventArgs e)
         {
             Controller controller = new Controller();
-            controller.loaudHTMLTextBox();
+            controller.loaudHTMLTextBox(AdressWWW.Text, wwwPag.Text);
         }
        
     }
