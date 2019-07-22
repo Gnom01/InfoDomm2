@@ -24,8 +24,7 @@ namespace InfoDOM
             int listNumberPages = 1;
 
             for (int i = 1; i <= numberOfPages; i++)
-            {
-                
+            { 
                 nrPag = listNumberPages.ToString();
 
                 String Response;
@@ -37,7 +36,6 @@ namespace InfoDOM
                 Regex regexMatch = new Regex(partParsingCode, optionsRegex);
                 MatchCollection parStringtParsingCode = regexMatch.Matches(Response);
                
-
                 int numberCollectionString = 0;
                 try
                 {
@@ -99,7 +97,6 @@ namespace InfoDOM
 
                         identifierOfBase++;
                         numberCollectionString++;
-                       
                     }
                     listNumberPages++;
                 }

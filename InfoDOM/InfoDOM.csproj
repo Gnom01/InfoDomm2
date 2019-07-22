@@ -71,7 +71,6 @@
   <ItemGroup>
     <Compile Include="controller.cs" />
     <Compile Include="connectionBD.cs" />
-    <Compile Include="DataEntryForParser.cs" />
     <Compile Include="dsfDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
